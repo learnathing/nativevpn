@@ -4,6 +4,8 @@ Apple Silicon macOS 13 以上的原生 VPN 客戶端。此儲存庫只提供安�
 
 **這是尚未完成跨機驗收的測試版。app/helper 使用 ad-hoc 簽章，pkg 未簽署，沒有 Apple 公證。macOS 可能阻擋安裝或啟動，Homebrew 不會取消這些檢查。** 若系統政策不允許安裝，請等待完成 Developer ID 簽章及公證的版本。
 
+0.3.4 已撤下：除錯符號含本機建置路徑。0.3.5 起在簽章前移除這些符號，並對展開後的全部檔案執行隱私檢查。
+
 ## 安裝與更新
 
 下載 Releases 的 `NativeVPN-版本-arm64.pkg`，用同頁的 SHA256SUMS 核對檔案；先斷線並退出舊版 NativeVPN，結束 vpnctl，再開啟安裝包並完成管理員授權。必須安裝完整套件，app 與權限服務版本須相符。
@@ -14,6 +16,8 @@ Apple Silicon macOS 13 以上的原生 VPN 客戶端。此儲存庫只提供安�
 brew tap learnathing/nativevpn
 brew install --cask learnathing/nativevpn/nativevpn
 ```
+
+若 Homebrew 顯示 untrusted tap，先檢視此 tap 的 Cask，再以 `brew trust --cask learnathing/nativevpn/nativevpn` 信任這個套件；這只授權 Homebrew 載入 Cask，不會繞過 macOS Gatekeeper。
 
 更新前先在 app 斷線並退出，並結束 vpnctl：
 
